@@ -1,9 +1,10 @@
 import './index.css'
-import useGetAppointments from './hooks/useGetAppointments'
 import NoAppointmentsView from 'components/Appointments/NoAppointmentsView'
+import { AppointmentsContext } from 'context/AppointmentsContext'
+import { useContext } from 'react'
 
 const Appointments = () => {
-  const { appointments, setAppointments } = useGetAppointments()
+  const { appointments, setAppointments } = useContext(AppointmentsContext)
 
   return appointments ? (
     <div>
