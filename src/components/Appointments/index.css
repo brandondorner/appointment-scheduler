@@ -1,0 +1,20 @@
+table {
+  background: white;
+  border-collapse: collapse;
+  color: #333;
+  font-size: 12px;
+  width: 80vw;
+}
+
+table thead th {
+  color: black;
+  background-color: lightgray;
+  font-size: large;
+  padding: 24px;
+}
+
+table th,
+table td {
+  padding: 8px;
+  border: 1px solid lightgrey;
+}
