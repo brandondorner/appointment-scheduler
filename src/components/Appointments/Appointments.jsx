@@ -5,12 +5,19 @@ import { useCallback, useContext } from 'react'
 import AddAppointmentButton from 'components/Appointments/AddAppointmentButton'
 import AppointmentForm from 'components/Appointments/AppointmentForm/AppointmentForm'
 import { ReactComponent as TrashIcon } from 'assets/trash-icon.svg'
-import useDeleteAppointment from 'components/Appointments/hooks/useDeleteAppointment'
+import { ReactComponent as EditIcon } from 'assets/edit-icon.svg'
 import DeleteAppointmentModal from 'components/Appointments/DeleteAppointmentModal'
 
 const Appointments = () => {
-  const { appointments, isDeleteModalOpen, isFormOpen, setAppointments, setSelectedAppointment, setIsDeleteModalOpen } =
-    useContext(AppointmentsContext)
+  const {
+    appointments,
+    isDeleteModalOpen,
+    isFormOpen,
+    setFormMode,
+    setIsDeleteModalOpen,
+    setIsFormOpen,
+    setSelectedAppointment
+  } = useContext(AppointmentsContext)
 
   const onDeleteAppointment = useCallback(
     (selectedAppointment) => {
@@ -19,6 +26,12 @@ const Appointments = () => {
     },
     [setSelectedAppointment]
   )
+
+  const onEditAppointment = useCallback((appointment) => {
+    setFormMode('edit')
+    setIsFormOpen(true)
+    setSelectedAppointment(appointment)
+  }, [])
 
   return (
     <div>
@@ -41,6 +54,7 @@ const Appointments = () => {
                 <th>{appointment.date}</th>
                 <th>{appointment.time}</th>
                 <th className="actions-column">
+                  <EditIcon onClick={() => onEditAppointment(appointment)} />
                   <TrashIcon onClick={() => onDeleteAppointment(appointment)} />
                 </th>
               </tr>

@@ -6,7 +6,8 @@ export const ApointmentsContextProvider = ({ children }) => {
   const [appointments, setAppointments] = useState([])
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
-  const [selectedAppointment, setSelectedAppointment] = useState(false)
+  const [formMode, setFormMode] = useState('')
+  const [selectedAppointment, setSelectedAppointment] = useState({})
 
   return (
     <AppointmentsContext.Provider
@@ -14,10 +15,12 @@ export const ApointmentsContextProvider = ({ children }) => {
         appointments,
         isDeleteModalOpen,
         isFormOpen,
+        formMode,
         selectedAppointment,
         setAppointments,
         setIsDeleteModalOpen,
         setIsFormOpen,
+        setFormMode,
         setSelectedAppointment
       }}
     >

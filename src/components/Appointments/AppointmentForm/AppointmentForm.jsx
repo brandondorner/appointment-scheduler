@@ -4,11 +4,13 @@ import { AppointmentsContext } from 'context/AppointmentsContext'
 import { useCallback, useContext, useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import useCreateAppointments from 'components/Appointments/hooks/useCreateAppointment'
+import useEditAppointment from 'components/Appointments/hooks/useEditAppointment'
 
 const APPOINTMENT_LOCATION_OPTIONS = ['London', 'Orlando', 'Portland', 'San Diego', 'Seattle']
 
 const AppointmentForm = () => {
-  const { appointments, selectedAppointment, setAppointments, setIsFormOpen } = useContext(AppointmentsContext)
+  const { appointments, formMode, selectedAppointment, setAppointments, setIsFormOpen, setSelectedAppointment } =
+    useContext(AppointmentsContext)
   const [date, setDate] = useState(selectedAppointment.date || '')
   const [description, setDescription] = useState(selectedAppointment.description || '')
   const [location, setLocation] = useState(selectedAppointment.location || '')
@@ -29,12 +31,17 @@ const AppointmentForm = () => {
     useCreateAppointments({ appointments, newAppointment, setAppointments })
   }, [appointments, newAppointment, setAppointments])
 
+  const onEditAppointment = useCallback(() => {
+    useEditAppointment({ appointments, selectedAppointment, setAppointments, updatedAppointment: newAppointment })
+    setSelectedAppointment({})
+  }, [appointments, newAppointment, selectedAppointment, setSelectedAppointment])
+
   return (
     <Modal onClose={setIsFormOpen}>
       <form
         onSubmit={(event) => {
           event.preventDefault()
-          onNewAppointment()
+          formMode === 'edit' ? onEditAppointment() : onNewAppointment()
           setIsFormOpen(false)
         }}
       >
