@@ -8,11 +8,12 @@ import useCreateAppointments from 'components/Appointments/hooks/useCreateAppoin
 const APPOINTMENT_LOCATION_OPTIONS = ['London', 'Orlando', 'Portland', 'San Diego', 'Seattle']
 
 const AppointmentForm = () => {
-  const { appointments, setAppointments, setIsFormOpen } = useContext(AppointmentsContext)
-  const [date, setDate] = useState('')
-  const [description, setDescription] = useState('')
-  const [location, setLocation] = useState('')
-  const [time, setTime] = useState('')
+  const { appointments, selectedAppointment, setAppointments, setIsFormOpen } = useContext(AppointmentsContext)
+  const [date, setDate] = useState(selectedAppointment.date || '')
+  const [description, setDescription] = useState(selectedAppointment.description || '')
+  const [location, setLocation] = useState(selectedAppointment.location || '')
+  const [time, setTime] = useState(selectedAppointment.time || '')
+  const currentDate = new Date()
 
   const newAppointment = useMemo(() => {
     return {
@@ -44,11 +45,12 @@ const AppointmentForm = () => {
             onChange={(event) => setDescription(event.target.value)}
             placeholder="Enter Description"
             required
+            value={description}
             type="text"
           />
           <label>Location</label>
-          <select onChange={(event) => setLocation(event.target.value)} required>
-            <option value="">Select Location</option>
+          <select onChange={(event) => setLocation(event.target.value)} required value={location}>
+            <option>Select Location</option>
             {APPOINTMENT_LOCATION_OPTIONS.map((option) => (
               <option key={`location-${option}`} value={option}>
                 {option}
@@ -57,17 +59,19 @@ const AppointmentForm = () => {
           </select>
           <label>Date and Time</label>
           <input
-            min={new Date().toLocaleDateString('en-CA')}
+            min={currentDate.toLocaleDateString('en-CA')}
             required
-            onSelect={(event) => setDate(event.target.value)}
+            onChange={(event) => setDate(event.target.value)}
             type="date"
+            value={date}
           />
           <label>Time</label>
           <input
             min={new Date().toLocaleTimeString('fr', { hour: '2-digit', minute: '2-digit' })}
-            onSelect={(event) => setTime(event.target.value)}
+            onChange={(event) => setTime(event.target.value)}
             required
             type="time"
+            value={time}
           />
           <button className="modal-button" type="submit">
             Submit
