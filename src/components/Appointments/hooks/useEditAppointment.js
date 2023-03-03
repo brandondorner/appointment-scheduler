@@ -1,4 +1,5 @@
 import sortArrayByDate from 'utils/sortArrayByDate'
+import sortArrayByTime from 'utils/sortArrayByTime'
 
 const useEditAppointment = ({ appointments, selectedAppointment, setAppointments, updatedAppointment }) => {
   const updatedAppointments = appointments.map((appointment) => {
@@ -6,8 +7,9 @@ const useEditAppointment = ({ appointments, selectedAppointment, setAppointments
   })
 
   const sortedArrayByDate = sortArrayByDate(updatedAppointments)
+  const sortedArrayByTime = sortArrayByTime(sortedArrayByDate)
 
-  setAppointments(sortedArrayByDate)
+  setAppointments(sortedArrayByTime)
 }
 
 export default useEditAppointment
