@@ -1,12 +1,24 @@
 import './index.css'
 import NoAppointmentsView from 'components/Appointments/NoAppointmentsView'
 import { AppointmentsContext } from 'context/AppointmentsContext'
-import { useContext } from 'react'
+import { useCallback, useContext } from 'react'
 import AddAppointmentButton from 'components/Appointments/AddAppointmentButton'
 import AppointmentForm from 'components/Appointments/AppointmentForm/AppointmentForm'
+import { ReactComponent as TrashIcon } from 'assets/trash-icon.svg'
+import useDeleteAppointment from 'components/Appointments/hooks/useDeleteAppointment'
+import DeleteAppointmentModal from 'components/Appointments/DeleteAppointmentModal'
 
 const Appointments = () => {
-  const { appointments, isFormOpen } = useContext(AppointmentsContext)
+  const { appointments, isDeleteModalOpen, isFormOpen, setAppointments, setSelectedAppointment, setIsDeleteModalOpen } =
+    useContext(AppointmentsContext)
+
+  const onDeleteAppointment = useCallback(
+    (selectedAppointment) => {
+      setSelectedAppointment(selectedAppointment)
+      setIsDeleteModalOpen(true)
+    },
+    [setSelectedAppointment]
+  )
 
   return (
     <div>
@@ -18,6 +30,7 @@ const Appointments = () => {
               <th>Location</th>
               <th>Date</th>
               <th>Time</th>
+              <th className="width-50">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +40,9 @@ const Appointments = () => {
                 <th>{appointment.location}</th>
                 <th>{appointment.date}</th>
                 <th>{appointment.time}</th>
+                <th className="actions-column">
+                  <TrashIcon onClick={() => onDeleteAppointment(appointment)} />
+                </th>
               </tr>
             ))}
           </tbody>
@@ -36,6 +52,7 @@ const Appointments = () => {
       )}
       <AddAppointmentButton />
       {isFormOpen && <AppointmentForm />}
+      {isDeleteModalOpen && <DeleteAppointmentModal />}
     </div>
   )
 }

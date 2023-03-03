@@ -47,3 +47,17 @@ table td {
   padding: 8px;
   border: 1px solid lightgrey;
 }
+
+svg {
+  height: 20px;
+  padding: 0 8px;
+  width: auto;
+}
+
+svg:hover {
+  cursor: pointer;
+}
+
+.width-50 {
+  width: 50px;
+}
