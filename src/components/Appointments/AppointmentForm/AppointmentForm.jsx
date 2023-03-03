@@ -36,6 +36,14 @@ const AppointmentForm = () => {
     setSelectedAppointment({})
   }, [appointments, newAppointment, selectedAppointment, setSelectedAppointment])
 
+  const minTime = useMemo(() => {
+    if (date === currentDate.toLocaleDateString('en-CA')) {
+      return currentDate.toLocaleTimeString('fr', { hour: '2-digit', minute: '2-digit' })
+    }
+
+    return '00:00'
+  }, [currentDate, date])
+
   return (
     <Modal onClose={setIsFormOpen}>
       <form
@@ -73,13 +81,7 @@ const AppointmentForm = () => {
             value={date}
           />
           <label>Time</label>
-          <input
-            min={new Date().toLocaleTimeString('fr', { hour: '2-digit', minute: '2-digit' })}
-            onChange={(event) => setTime(event.target.value)}
-            required
-            type="time"
-            value={time}
-          />
+          <input min={minTime} onChange={(event) => setTime(event.target.value)} required type="time" value={time} />
           <button className="modal-button" type="submit">
             Submit
           </button>
