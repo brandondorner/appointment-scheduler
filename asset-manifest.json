@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.6bc834a3.css",
-    "main.js": "/react-gh-pages/static/js/main.e28d6fae.js",
-    "static/media/trash-icon.svg": "/react-gh-pages/static/media/trash-icon.a94ae7126c34695b9d2822cb4aeb56e7.svg",
-    "static/media/edit-icon.svg": "/react-gh-pages/static/media/edit-icon.48173cfd1edc7fc2d9fae57eb5bdb963.svg",
-    "index.html": "/react-gh-pages/index.html",
-    "main.6bc834a3.css.map": "/react-gh-pages/static/css/main.6bc834a3.css.map",
-    "main.e28d6fae.js.map": "/react-gh-pages/static/js/main.e28d6fae.js.map"
+    "main.css": "/appointment-scheduler/static/css/main.6bc834a3.css",
+    "main.js": "/appointment-scheduler/static/js/main.d0b03c43.js",
+    "static/media/trash-icon.svg": "/appointment-scheduler/static/media/trash-icon.a94ae7126c34695b9d2822cb4aeb56e7.svg",
+    "static/media/edit-icon.svg": "/appointment-scheduler/static/media/edit-icon.48173cfd1edc7fc2d9fae57eb5bdb963.svg",
+    "index.html": "/appointment-scheduler/index.html",
+    "main.6bc834a3.css.map": "/appointment-scheduler/static/css/main.6bc834a3.css.map",
+    "main.d0b03c43.js.map": "/appointment-scheduler/static/js/main.d0b03c43.js.map"
   },
   "entrypoints": [
     "static/css/main.6bc834a3.css",
-    "static/js/main.e28d6fae.js"
+    "static/js/main.d0b03c43.js"
   ]
 }
