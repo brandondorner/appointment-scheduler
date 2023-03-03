@@ -1,10 +1,5 @@
 const NoAppointmentsView = () => {
-  return (
-    <div>
-      <h4>You Have No Appointments</h4>
-      <button>Add Appointment</button>
-    </div>
-  )
+  return <h4>You Have No Appointments</h4>
 }
 
 export default NoAppointmentsView

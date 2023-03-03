@@ -1,0 +1,9 @@
+.appt-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-button {
+  color: black;
+}
