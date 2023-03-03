@@ -1,15 +1,20 @@
 import { AppointmentsContext } from 'context/AppointmentsContext'
-import { useContext } from 'react'
+import { useCallback, useContext } from 'react'
 
 const AddAppointmentButton = () => {
-  const { setFormMode, setIsFormOpen } = useContext(AppointmentsContext)
+  const { setFormMode, setIsFormOpen, setSelectedAppointment } = useContext(AppointmentsContext)
+
+  const onAdd = useCallback(() => {
+    setFormMode('create')
+    setIsFormOpen(true)
+    setSelectedAppointment({})
+  }, [])
 
   return (
     <div>
       <button
         onClick={() => {
-          setFormMode('create')
-          setIsFormOpen(true)
+          onAdd()
         }}
       >
         Add Appointment
