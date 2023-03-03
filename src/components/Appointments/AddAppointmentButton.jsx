@@ -5,7 +5,7 @@ const AddAppointmentButton = () => {
   const { setFormMode, setIsFormOpen, setSelectedAppointment } = useContext(AppointmentsContext)
 
   const onAdd = useCallback(() => {
-    setFormMode('create')
+    setFormMode('Create')
     setIsFormOpen(true)
     setSelectedAppointment({})
   }, [])

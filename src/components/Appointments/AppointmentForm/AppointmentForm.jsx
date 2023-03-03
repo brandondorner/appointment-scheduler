@@ -41,12 +41,12 @@ const AppointmentForm = () => {
       <form
         onSubmit={(event) => {
           event.preventDefault()
-          formMode === 'edit' ? onEditAppointment() : onNewAppointment()
+          formMode === 'Edit' ? onEditAppointment() : onNewAppointment()
           setIsFormOpen(false)
         }}
       >
         <div className="appt-form-container">
-          <b>Add Appointment</b>
+          <b>{formMode} Appointment</b>
           <label>Description:</label>
           <input
             onChange={(event) => setDescription(event.target.value)}

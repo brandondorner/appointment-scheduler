@@ -28,7 +28,7 @@ const Appointments = () => {
   )
 
   const onEditAppointment = useCallback((appointment) => {
-    setFormMode('edit')
+    setFormMode('Edit')
     setIsFormOpen(true)
     setSelectedAppointment(appointment)
   }, [])
