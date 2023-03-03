@@ -29,7 +29,7 @@ const AppointmentForm = () => {
   }, [appointments, newAppointment, setAppointments])
 
   return (
-    <Modal>
+    <Modal onClose={setIsFormOpen}>
       <form
         onSubmit={(event) => {
           event.preventDefault()
@@ -69,16 +69,8 @@ const AppointmentForm = () => {
             required
             type="time"
           />
-          <button className="form-button" type="submit">
+          <button className="modal-button" type="submit">
             Submit
-          </button>
-          <button
-            className="form-button"
-            onClick={() => {
-              setIsFormOpen(false)
-            }}
-          >
-            Close
           </button>
         </div>
       </form>

@@ -12,3 +12,9 @@
   font-size: calc(10px + 2vmin);
   padding: 64px
 }
+
+.modal-button {
+  color: black;
+  margin: 8px 0;
+  width: 100%;
+}
