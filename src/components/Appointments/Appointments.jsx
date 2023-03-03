@@ -14,18 +14,18 @@ const Appointments = () => {
         <table>
           <thead>
             <tr>
-              <th>Date</th>
               <th>Description</th>
               <th>Location</th>
+              <th>Date</th>
               <th>Time</th>
             </tr>
           </thead>
           <tbody>
             {appointments.map((appointment) => (
               <tr className="appointments-table-body-row" key={appointment.id}>
-                <th>{appointment.date}</th>
                 <th>{appointment.description}</th>
                 <th>{appointment.location}</th>
+                <th>{appointment.date}</th>
                 <th>{appointment.time}</th>
               </tr>
             ))}
