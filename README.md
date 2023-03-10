@@ -1,4 +1,8 @@
-A demo appointment scheduling app
+A demo appointment scheduling app using:
+React
+Custom Hooks
+React Context API
+And no external libraries
 
 ## Available Scripts
 
